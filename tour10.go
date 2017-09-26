@@ -11,6 +11,7 @@ type student struct {
 
 func pase_student() {
 	m := make(map[string]*student)
+//	t := make(map[string]*student)
 	stus := []student{
 		{Name: "zhou", Age: 24},
 		{Name: "li", Age: 23},
@@ -19,7 +20,17 @@ func pase_student() {
 	for _, stu := range stus {
 		m[stu.Name] = &stu
 	}
-	fmt.Println(m)
+	for k,v:=range m{
+		fmt.Println(k,"=>",v.Name)
+	}
+
+	for i:=0;i<len(stus);i++  {
+		m[stus[i].Name] = &stus[i]
+	}
+
+	for k,v:=range m{
+		fmt.Println(k,"=>",v.Name)
+	}
 }
 
 
