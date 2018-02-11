@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -90,8 +92,18 @@ func handleGetBlockchain(w http.ResponseWriter, r *http.Request) {
 func handleWriteBlock(w http.ResponseWriter, r *http.Request) {
 	var m Message
 
+	result, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		log.Fatal(err)
+	} else {
+
+		log.Fatal("结果:", bytes.NewBuffer(result).String())
+	}
+
 	decoder := json.NewDecoder(r.Body)
+//	log.Fatal("decoder:", decoder)
 	if err := decoder.Decode(&m); err != nil {
+//		log.Fatal(err)
 		respondWithJSON(w, r, http.StatusBadRequest, r.Body)
 		return
 	}
