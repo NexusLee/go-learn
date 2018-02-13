@@ -7,14 +7,14 @@ import (
 
 func main(){
 	// tcp 监听并接受端口
-	l, err := net.Listen("tcp", ":65535")
+	l, err := net.Listen("tcp", ":3001")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	//最后关闭
 	defer l.Close()
-	fmt.Println("tcp服务端开始监听8000端口...")
+	fmt.Println("tcp服务端开始监听3001端口...")
 	// 使用循环一直接受连接
 	for {
 		fmt.Println("loop test")
@@ -36,7 +36,7 @@ func handleConnection(c net.Conn) {
 	buffer := make([]byte, 1024)
 	//如果客户端无数据则会阻塞，服务端阻塞，直到等待客户端传递数据。
 	c.Read(buffer)
-
+	fmt.Println(buffer)
 	//服务端成功从阻塞状态走出，读取客户端的数据，并根据自身的接口输出buffer
 	c.Write(buffer)
 	fmt.Println("tcp服务端开始处理请求完毕...")

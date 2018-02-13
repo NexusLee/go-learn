@@ -1,4 +1,4 @@
-package main
+package grpc
 
 import(
 	"log"
@@ -10,7 +10,7 @@ import(
 )
 
 const(
-	address = "localhost:50051"
+	address = "192.168.200.163:50051"
 	defaultName = "world"
 )
 

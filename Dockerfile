@@ -13,4 +13,5 @@ RUN go get -v github.com/joho/godotenv
 RUN go get -v github.com/derekparker/delve/cmd/dlv
 
 EXPOSE 3000
+EXPOSE 3001
 

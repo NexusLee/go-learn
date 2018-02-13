@@ -7,12 +7,12 @@ import (
 
 func main()  {
 	//net.dial 拨号 获取tcp连接
-	conn, err := net.Dial("tcp", ":65535")
+	conn, err := net.Dial("tcp", "192.168.200.163:8001")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("获取127.0.0.1：8000的tcp连接成功...")
+	fmt.Println("获取192.168.200.163:3001的tcp连接成功...")
 
 	defer conn.Close()
 	//客户端这里不用使用协程。使用协程的话main函数退出，所有go 协程全部死掉。
