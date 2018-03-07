@@ -1,23 +1,25 @@
-package grpc
+package main
 
-import(
+import (
 	"log"
 	"net"
 
-	pb "google.golang.org/grpc/examples/helloworld"
-	"net/context"
+//	pb "github.com/grpc/grpc-go/examples/helloworld/helloworld"
+	pb "google.golang.org/grpc/examples/helloworld/helloworld"
+	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+//	"github.com/grpc/grpc-go"
 )
 
-const(
-	port = ":50051"
+const (
+	port  =  ":50051"
 )
 
-type server struct {}
+type server struct{}
 
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest)(*pb.HelloReply, error){
 	log.Println(in.Name)
-	return *pb.HelloReply{ Message: "Hello " + in.Name }, nil
+	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
 }
 
 func main(){
@@ -25,7 +27,6 @@ func main(){
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-
 	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, &server{})
 	s.Serve(lis)
