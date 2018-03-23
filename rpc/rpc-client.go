@@ -26,7 +26,7 @@ func main() {
 	}
 	// Synchronous call
 	var res Response
-	err = client.Call("Ip2addr.Address", Agrs{"your ip address"}, &res)
+	err = client.Call("Ip2addr.Address", Agrs{"ip address"}, &res)
 	if err != nil {
 		log.Fatal("Ip2addr error:", err)
 	}
