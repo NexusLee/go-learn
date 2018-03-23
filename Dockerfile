@@ -3,15 +3,17 @@ FROM golang:1.8
 # RUN go get -v github.com/yireyun/go-queue
 # RUN go get -v github.com/robfig/cron
 
- RUN go get -v github.com/graphql-go/graphql
+# RUN go get -v github.com/graphql-go/graphql
 # RUN go get -v github.com/golang/protobuf/proto
 # RUN go get -v github.com/golang/protobuf/ptypes
-# RUN go get -u github.com/gpmgo/gopm
+ RUN go get -u github.com/gpmgo/gopm
+ RUN gopm get -g -d golang.org/x/sys
 # RUN gopm get -g -d golang.org/x/text
 # RUN gopm get -g -d github.com/golang/net/context
 # RUN gopm get -g -d github.com/google/go-genproto
 # RUN gopm get -g -d golang.org/x/net/http2
 
+ RUN go get -v github.com/oschwald/geoip2-golang
 
 # grpc下载和部署
 # RUN gopm get -g -d github.com/grpc/grpc-go
